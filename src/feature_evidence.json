@@ -1,0 +1,110 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-main-page-that-displays-all-clearance-items-from-both-home-depot-and-lowe-s-in-a-grid-or-list-view-showing-product-name-store-name-original-price-clearance-price-discount-percentage-and-store-location",
+      "featureTitle": "Create a main page that displays all clearance items from both Home Depot and Lowe's in a grid or list view, showing product name, store name, original price, clearance price, discount percentage, and store location",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ClearanceItemCard.tsx",
+        "frontend/src/components/ClearanceItemsList.tsx",
+        "frontend/src/pages/MainPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-location-based-filtering-that-allows-users-to-see-only-clearance-items-from-stores-near-their-location-with-the-ability-to-specify-a-radius-e-g-within-10-25-or-50-miles",
+      "featureTitle": "Implement location-based filtering that allows users to see only clearance items from stores near their location, with the ability to specify a radius (e.g., within 10, 25, or 50 miles)",
+      "files": [
+        "frontend/src/components/ClearanceItemCard.tsx",
+        "frontend/src/components/LocationFilter.tsx",
+        "frontend/src/pages/MainPage.tsx",
+        "frontend/src/utils/distanceCalculator.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-filter-controls-to-allow-users-to-filter-items-by-store-home-depot-only-lowe-s-only-or-both-product-category-and-price-range-with-min-max-inputs",
+      "featureTitle": "Add filter controls to allow users to filter items by store (Home Depot only, Lowe's only, or both), product category, and price range with min/max inputs",
+      "files": [
+        "frontend/src/components/CategoryFilter.tsx",
+        "frontend/src/components/FilterPanel.tsx",
+        "frontend/src/components/PriceRangeFilter.tsx",
+        "frontend/src/components/StoreFilter.tsx",
+        "frontend/src/pages/MainPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-display-a-deals-section-that-highlights-the-best-discounts-highest-percentage-off-from-both-stores-sorted-by-discount-percentage-in-descending-order",
+      "featureTitle": "Display a deals section that highlights the best discounts (highest percentage off) from both stores, sorted by discount percentage in descending order",
+      "files": [
+        "frontend/src/components/BestDealsSection.tsx",
+        "frontend/src/pages/MainPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-clean-modern-visual-design-with-a-cohesive-color-scheme-that-uses-warm-approachable-tones-like-amber-and-terracotta-contemporary-sans-serif-typography-and-card-based-layouts-with-subtle-shadows-and-rounded-corners-for-an-inviting-shopping-experience",
+      "featureTitle": "Create a clean, modern visual design with a cohesive color scheme that uses warm, approachable tones like amber and terracotta, contemporary sans-serif typography, and card-based layouts with subtle shadows and rounded corners for an inviting shopping experience",
+      "files": [
+        "frontend/src/components/BestDealsSection.tsx",
+        "frontend/src/components/ClearanceItemCard.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/MainPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

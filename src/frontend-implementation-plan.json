@@ -1,0 +1,192 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Clearance Finder - Frontend Implementation Plan",
+  "requirements": [
+    {
+      "id": "REQ-3",
+      "summary": "Create main page displaying all clearance items from both Home Depot and Lowe's",
+      "acceptanceCriteria": [
+        "Items from both stores are displayed together",
+        "Each item card shows all key information clearly",
+        "Store name is visually distinguishable (Home Depot vs Lowe's)",
+        "Discount percentage is prominently displayed",
+        "Layout is responsive and works on mobile devices"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useClearanceItems.ts",
+          "operation": "create",
+          "description": "Create a custom hook to fetch all clearance items from the backend using the backendInterface methods. This hook will manage loading states, error handling, and data fetching for clearance items. Use the getClearanceItemsByStore method to retrieve items from both stores."
+        },
+        {
+          "path": "frontend/src/components/ClearanceItemCard.tsx",
+          "operation": "create",
+          "description": "Create a reusable card component to display individual clearance items. Show product name, store name (with visual distinction for Home Depot vs Lowe's using store-specific colors or badges), original price, clearance price, discount percentage (prominently displayed), product category, and store location. Use shadcn/ui Card component as the base. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ClearanceItemsList.tsx",
+          "operation": "create",
+          "description": "Create a component that renders a responsive grid or list of ClearanceItemCard components. Accept an array of ClearanceItem objects as props and map them to cards. Implement responsive layout using Tailwind CSS grid classes that work on mobile, tablet, and desktop. Include loading and empty states."
+        },
+        {
+          "path": "frontend/src/pages/MainPage.tsx",
+          "operation": "create",
+          "description": "Create the main page component that fetches clearance items using useClearanceItems hook and displays them using ClearanceItemsList component. Include a header section with the app title. Handle loading and error states appropriately. This page will serve as the primary view for browsing clearance items."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the MainPage component into the app routing structure. Set MainPage as the default route so users see clearance items immediately upon visiting the app."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement location-based filtering with radius selection",
+      "acceptanceCriteria": [
+        "User can input their location (zip code or city)",
+        "User can select a distance radius from preset options",
+        "Items are filtered to show only those within the specified radius",
+        "Distance from user's location is displayed for each item",
+        "Clear indication when no items are found within the radius"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/distanceCalculator.ts",
+          "operation": "create",
+          "description": "Create utility functions to calculate distances between coordinates using the Haversine formula. Accept two coordinate pairs (latitude, longitude) and return distance in miles. Include a function to filter items based on distance threshold."
+        },
+        {
+          "path": "frontend/src/components/LocationFilter.tsx",
+          "operation": "create",
+          "description": "Create a location filter component with input fields for city and state (or zip code), and a dropdown or radio group for selecting distance radius (10, 25, or 50 miles). Use shadcn/ui Input and Select components. Verify the component's usage instructions before implementing. Include validation for location inputs and emit filter changes to parent component."
+        },
+        {
+          "path": "frontend/src/hooks/useLocationFilter.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage location-based filtering logic. Accept user location input and radius, fetch clearance items, calculate distances using distanceCalculator utility, and filter items within the specified radius. Use getClearanceItemsByLocation backend method when possible. Return filtered items and distance information for each item."
+        },
+        {
+          "path": "frontend/src/components/ClearanceItemCard.tsx",
+          "operation": "modify",
+          "description": "Enhance the card component to optionally display distance from user location when available. Add a distance badge or text element that shows distance in miles. Make this element conditionally render based on whether distance data is provided."
+        },
+        {
+          "path": "frontend/src/pages/MainPage.tsx",
+          "operation": "modify",
+          "description": "Integrate LocationFilter component into the main page. Wire useLocationFilter hook to apply location-based filtering to the displayed items. Show a message when no items are found within the selected radius."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add filter controls for store, category, and price range",
+      "acceptanceCriteria": [
+        "Store filter toggles between Home Depot, Lowe's, or both",
+        "Category filter includes common categories (tools, appliances, building materials, etc.)",
+        "Price range filter has min and max input fields",
+        "Filters can be combined and applied together",
+        "Clear or reset button to remove all filters"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/StoreFilter.tsx",
+          "operation": "create",
+          "description": "Create a store filter component with toggle options for Home Depot, Lowe's, or both stores. Use shadcn/ui RadioGroup or ToggleGroup component. Verify the component's usage instructions before implementing. Emit selected store filter value to parent component."
+        },
+        {
+          "path": "frontend/src/components/CategoryFilter.tsx",
+          "operation": "create",
+          "description": "Create a category filter component with a dropdown or checkbox group for product categories (tools, appliances, building materials, lawn & garden, paint, hardware, lighting, flooring, etc.). Use shadcn/ui Select or Checkbox components. Verify the component's usage instructions before implementing. Support multiple category selection if appropriate."
+        },
+        {
+          "path": "frontend/src/components/PriceRangeFilter.tsx",
+          "operation": "create",
+          "description": "Create a price range filter component with two input fields for minimum and maximum price values. Use shadcn/ui Input component with number type. Verify the component's usage instructions before implementing. Include validation to ensure min is not greater than max. Emit price range values to parent component."
+        },
+        {
+          "path": "frontend/src/components/FilterPanel.tsx",
+          "operation": "create",
+          "description": "Create a composite filter panel component that includes StoreFilter, CategoryFilter, PriceRangeFilter, and LocationFilter components. Add a clear/reset button to remove all active filters. Use shadcn/ui Button component for the reset action. Verify the component's usage instructions before implementing. Organize filters in a clean layout that works on mobile and desktop."
+        },
+        {
+          "path": "frontend/src/hooks/useFilters.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage combined filtering logic. Accept filter values for store, category, price range, and location. Apply all filters to the clearance items dataset and return filtered results. Use backend methods like getClearanceItemsByStore and getClearanceItemsByPriceRange when appropriate, then apply additional client-side filtering for combined criteria."
+        },
+        {
+          "path": "frontend/src/pages/MainPage.tsx",
+          "operation": "modify",
+          "description": "Integrate FilterPanel component into the main page layout. Wire useFilters hook to apply all selected filters to the displayed items. Position the filter panel in a sidebar or collapsible section for easy access."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Display best deals section highlighting highest discounts",
+      "acceptanceCriteria": [
+        "Best deals are shown in a prominent section",
+        "Items are sorted by discount percentage (highest first)",
+        "At least top 10-20 deals are displayed",
+        "Section is visually distinct from the main item list",
+        "Each deal shows the discount percentage prominently"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/BestDealsSection.tsx",
+          "operation": "create",
+          "description": "Create a best deals section component that displays top clearance items sorted by discount percentage in descending order. Show at least the top 10-20 deals. Use a visually distinct design (different background color, border, or styling) to highlight this section. Render items using ClearanceItemCard with emphasis on discount percentage. Include a section header like 'Best Deals' or 'Top Discounts'."
+        },
+        {
+          "path": "frontend/src/hooks/useBestDeals.ts",
+          "operation": "create",
+          "description": "Create a custom hook to fetch clearance items and sort them by discount percentage in descending order. Return the top 10-20 items with the highest discounts. Use backend methods to fetch all items, then apply client-side sorting."
+        },
+        {
+          "path": "frontend/src/pages/MainPage.tsx",
+          "operation": "modify",
+          "description": "Integrate BestDealsSection component into the main page above or below the main clearance items list. Wire useBestDeals hook to provide data to the section. Position the section prominently so users immediately see the best available deals."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Create clean, modern visual design with warm color scheme and card-based layouts",
+      "acceptanceCriteria": [
+        "Color palette uses warm tones consistently throughout the app",
+        "Typography is clear and readable with appropriate hierarchy",
+        "Card layouts have consistent spacing and visual treatment",
+        "Design feels modern and approachable",
+        "Store branding (Home Depot/Lowe's) is respected but integrated into the cohesive design"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the Tailwind configuration to define a custom color palette with warm, approachable tones like amber and terracotta. Add custom colors for primary (amber/orange tones), secondary (terracotta/rust tones), and accent colors. Configure these colors to be used throughout the app for consistent branding. Also define subtle variations for hover states and backgrounds."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Apply global typography styles using contemporary sans-serif fonts. Set up CSS custom properties for the warm color scheme defined in Tailwind config. Define consistent spacing, shadows, and border-radius values for card-based layouts. Include smooth transitions for interactive elements. Ensure text hierarchy is clear with appropriate font sizes and weights."
+        },
+        {
+          "path": "frontend/src/components/ClearanceItemCard.tsx",
+          "operation": "modify",
+          "description": "Apply the warm color scheme and modern design system to the clearance item cards. Use subtle shadows and rounded corners as defined in the global styles. Ensure store branding (Home Depot orange, Lowe's blue) is incorporated through badges or accents while maintaining the overall warm aesthetic. Make discount percentage visually prominent with appropriate color contrast."
+        },
+        {
+          "path": "frontend/src/components/BestDealsSection.tsx",
+          "operation": "modify",
+          "description": "Apply warm background tones and consistent card styling to the best deals section. Use the defined color palette to make this section visually distinct while maintaining design cohesion. Ensure spacing and shadows match the overall design system."
+        },
+        {
+          "path": "frontend/src/pages/MainPage.tsx",
+          "operation": "modify",
+          "description": "Apply the warm, modern design system to the main page layout. Use consistent spacing, background colors from the warm palette, and ensure the overall layout feels inviting and approachable. Apply appropriate padding and margins for a clean, uncluttered appearance."
+        }
+      ]
+    }
+  ]
+}

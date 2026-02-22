@@ -1,0 +1,16 @@
+{
+  "frontend/src/App.tsx": "Main application component that wraps the app with ThemeProvider and renders the MainPage component with toast notifications.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for fetching clearance items from the backend with various filters and mutation for adding new items, properly typed with AvailabilityStatus enum.",
+  "frontend/src/utils/distanceCalculator.ts": "Utility functions for calculating distances between coordinates using the Haversine formula and filtering items by distance radius.",
+  "frontend/src/components/ClearanceItemCard.tsx": "Reusable card component displaying individual clearance items with store branding, pricing, discount percentage, location, and availability status using proper enum comparison.",
+  "frontend/src/components/LocationFilter.tsx": "Filter component allowing users to input city, state, and distance radius to find nearby clearance items.",
+  "frontend/src/components/StoreFilter.tsx": "Radio group filter component for selecting between Home Depot, Lowe's, or both stores.",
+  "frontend/src/components/CategoryFilter.tsx": "Checkbox-based filter component for selecting multiple product categories.",
+  "frontend/src/components/PriceRangeFilter.tsx": "Filter component with min/max price inputs for filtering items by price range.",
+  "frontend/src/components/FilterPanel.tsx": "Composite filter panel that combines all filter components (store, category, price, location) with a clear all button.",
+  "frontend/src/components/BestDealsSection.tsx": "Highlighted section displaying top 12 clearance items sorted by highest discount percentage with distinctive styling.",
+  "frontend/src/components/ClearanceItemsList.tsx": "Grid layout component that renders a list of clearance item cards with loading and empty states.",
+  "frontend/src/pages/MainPage.tsx": "Main page component with header, filter sidebar, best deals section, and clearance items list with responsive layout and filter state management.",
+  "frontend/src/index.css": "Global styles with warm amber/terracotta OKLCH color system for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom warm color palette, Inter font family, and extended design tokens for shadows and animations."
+}

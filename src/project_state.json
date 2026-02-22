@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "A website that tracks clearance items and deals from Home Depot and Lowe's stores near the user's location",
+  "architectural_notes": [
+    "Website will need to integrate with or scrape Home Depot and Lowe's for clearance/deal data",
+    "Location services required to determine user's nearby stores"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-main-page-that-displays-all-clearance-items-from-both-home-depot-and-lowe-s-in-a-grid-or-list-view-showing-product-name-store-name-original-price-clearance-price-discount-percentage-and-store-location",
+      "title": "Create a main page that displays all clearance items from both Home Depot and Lowe's in a grid or list view, showing product name, store name, original price, clearance price, discount percentage, and store location",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-location-based-filtering-that-allows-users-to-see-only-clearance-items-from-stores-near-their-location-with-the-ability-to-specify-a-radius-e-g-within-10-25-or-50-miles",
+      "title": "Implement location-based filtering that allows users to see only clearance items from stores near their location, with the ability to specify a radius (e.g., within 10, 25, or 50 miles)",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-filter-controls-to-allow-users-to-filter-items-by-store-home-depot-only-lowe-s-only-or-both-product-category-and-price-range-with-min-max-inputs",
+      "title": "Add filter controls to allow users to filter items by store (Home Depot only, Lowe's only, or both), product category, and price range with min/max inputs",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-a-deals-section-that-highlights-the-best-discounts-highest-percentage-off-from-both-stores-sorted-by-discount-percentage-in-descending-order",
+      "title": "Display a deals section that highlights the best discounts (highest percentage off) from both stores, sorted by discount percentage in descending order",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-clean-modern-visual-design-with-a-cohesive-color-scheme-that-uses-warm-approachable-tones-like-amber-and-terracotta-contemporary-sans-serif-typography-and-card-based-layouts-with-subtle-shadows-and-rounded-corners-for-an-inviting-shopping-experience",
+      "title": "Create a clean, modern visual design with a cohesive color scheme that uses warm, approachable tones like amber and terracotta, contemporary sans-serif typography, and card-based layouts with subtle shadows and rounded corners for an inviting shopping experience",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Track Home Depot clearance items near user location",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Track Lowe's clearance items near user location",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Display all deals from both stores",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Location-based filtering for nearby stores",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Create a backend data model to store clearance items with fields: store name (Home Depot or Lowe's), product name, original price, clearance price, discount percentage, product category, store location (address, city, state, zip code, coordinates), availability status, and timestamp of last update",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement backend functions to add, update, retrieve, and delete clearance items with filtering capabilities by store name, location, and price range",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Clearance Tracker",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

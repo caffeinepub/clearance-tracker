@@ -1,0 +1,143 @@
+{
+  "kind": "build_request",
+  "title": "Build clearance tracker for Home Depot and Lowe's",
+  "projectName": "Clearance Finder",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a backend data model to store clearance items with fields: store name (Home Depot or Lowe's), product name, original price, clearance price, discount percentage, product category, store location (address, city, state, zip code, coordinates), availability status, and timestamp of last update",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Data model supports both Home Depot and Lowe's items",
+        "Price fields allow decimal values",
+        "Location data includes coordinates for distance calculations",
+        "Timestamp tracks when item data was last updated"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement backend functions to add, update, retrieve, and delete clearance items with filtering capabilities by store name, location, and price range",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Can add new clearance items with all required fields",
+        "Can filter items by store (Home Depot or Lowe's)",
+        "Can filter items by proximity to a given location",
+        "Can filter items by price range",
+        "Can update existing items and delete old entries"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a main page that displays all clearance items from both Home Depot and Lowe's in a grid or list view, showing product name, store name, original price, clearance price, discount percentage, and store location",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Items from both stores are displayed together",
+        "Each item card shows all key information clearly",
+        "Store name is visually distinguishable (Home Depot vs Lowe's)",
+        "Discount percentage is prominently displayed",
+        "Layout is responsive and works on mobile devices"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement location-based filtering that allows users to see only clearance items from stores near their location, with the ability to specify a radius (e.g., within 10, 25, or 50 miles)",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "User can input their location (zip code or city)",
+        "User can select a distance radius from preset options",
+        "Items are filtered to show only those within the specified radius",
+        "Distance from user's location is displayed for each item",
+        "Clear indication when no items are found within the radius"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add filter controls to allow users to filter items by store (Home Depot only, Lowe's only, or both), product category, and price range with min/max inputs",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Store filter toggles between Home Depot, Lowe's, or both",
+        "Category filter includes common categories (tools, appliances, building materials, etc.)",
+        "Price range filter has min and max input fields",
+        "Filters can be combined and applied together",
+        "Clear or reset button to remove all filters"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Display a deals section that highlights the best discounts (highest percentage off) from both stores, sorted by discount percentage in descending order",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Best deals are shown in a prominent section",
+        "Items are sorted by discount percentage (highest first)",
+        "At least top 10-20 deals are displayed",
+        "Section is visually distinct from the main item list",
+        "Each deal shows the discount percentage prominently"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Create a clean, modern visual design with a cohesive color scheme that uses warm, approachable tones like amber and terracotta, contemporary sans-serif typography, and card-based layouts with subtle shadows and rounded corners for an inviting shopping experience",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color palette uses warm tones consistently throughout the app",
+        "Typography is clear and readable with appropriate hierarchy",
+        "Card layouts have consistent spacing and visual treatment",
+        "Design feels modern and approachable",
+        "Store branding (Home Depot/Lowe's) is respected but integrated into the cohesive design"
+      ]
+    }
+  ],
+  "constraints": [
+    "Must support clearance items from both Home Depot and Lowe's stores",
+    "Location filtering must work with user-provided location data",
+    "All prices must support decimal values for accurate pricing"
+  ],
+  "nonGoals": [
+    "Direct integration with Home Depot or Lowe's APIs",
+    "Automatic scraping of store websites",
+    "User accounts or authentication",
+    "Purchase functionality or shopping cart",
+    "Real-time inventory updates from stores",
+    "Mobile native app development"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
